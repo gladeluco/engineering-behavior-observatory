@@ -145,6 +145,7 @@ configuration files at `/tmp/ebo-worker/config/<locator>`.
 | Claude Agent SDK | SDK archive and authorized route | Direct SDK query, hooks and session capture |
 | Pi | SDK archive and selected provider key | Fresh Pi session, native tools and persistence |
 | Cursor | SDK archive, `CURSOR_API_KEY`, required local system tools | Direct SDK, HTTP/1.1 and native recovery |
+| Factory Droid | SDK archive built with `--factory`, pinned Linux Droid CLI and selected Factory key | Official SDK with native recording; fresh owned session per step |
 | Codex | Pinned Linux app-server executable declared in harness config | Owned stdio child; no host daemon |
 | DeepSeek Harness | Named Linux runtime/plugin composition and its installed runtime | Official TypeScript JSON-RPC client |
 | OpenHands | Pinned Agent Server started inside the task container | Loopback REST/WebSocket, same working directory |
@@ -355,3 +356,16 @@ and optional solution adaptation; conversion does not invent rewards or approval
 Windows, GPU/TPU environments, MCP services and multi-service Compose tasks are
 classified as unsupported by this initial profile. The official Harbor validator
 remains responsible for task-format validity.
+
+### Factory provider qualification
+
+Factory uses the same capture core for managed and BYOK models. Freeze the
+[Factory model route](../harnesses/factory-droid.md#freeze-the-condition) and
+include its credential variable in the worker's `environmentKeys`:
+`FACTORY_API_KEY` for managed inference, or `FIREWORKS_API_KEY` for the Fireworks
+BYOK template. Credentials are injected after branching and excluded from frozen
+model records. Build the guest runtime with `--factory`.
+
+Run the [Factory live checks](../harnesses/factory-droid.md#verification-and-live-qualification)
+for each selected provider/image combination. The synthetic Pi Smol conformance
+suite validates infrastructure independently of Factory inference.

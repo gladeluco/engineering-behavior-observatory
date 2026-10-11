@@ -61,6 +61,7 @@ ebo agent-sdk run <bundle-root> <queue.json> <run-id> <output-root> [--workspace
 ebo codex run <bundle-root> <queue.json> <run-id> <output-root> [--workspace-root <path>]
 ebo devin run <bundle-root> <queue.json> <run-id> <output-root> [--workspace-root <path>]
 ebo cursor run <bundle-root> <queue.json> <run-id> <output-root> [--workspace-root <path>]
+ebo factory run <bundle-root> <queue.json> <run-id> <output-root> [--workspace-root <path>]
 ebo pi run <bundle-root> <queue.json> <run-id> <output-root> [--workspace-root <path>]
 ```
 
@@ -166,3 +167,8 @@ from a bundle; `packet verify` rechecks every file against its manifest.
 
 For preparation and recovery, use the [operator guide](../guides/operator-guide.md).
 For field definitions, use the [reference index](README.md).
+
+Factory's `ebo factory run` accepts managed and BYOK conditions through the
+[frozen model record](../harnesses/factory-droid.md#freeze-the-condition).
+Select the Fireworks endpoint and credential variable in that record; credentials
+remain environment inputs rather than CLI arguments.
