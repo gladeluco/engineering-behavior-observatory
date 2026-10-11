@@ -13,37 +13,42 @@ separate control runtime with Python 3.14:
 
 ```sh
 python3 -m venv .harbor-venv
-.harbor-venv/bin/pip install 'smolmachines[harbor]==1.18.2' harbor==0.22.0
+.harbor-venv/bin/pip install 'harbor[smol]==0.24.0' smolmachines==1.26.1
 .harbor-venv/bin/pip check
 export EBO_HARBOR_PYTHON="$PWD/.harbor-venv/bin/python"
 unset SMOLVM_LIB_DIR
 ebo harbor doctor
 ```
 
+Harbor supplies the provider adapter through its `smol` extra. The Smol wheel
+pins the bundled VM runtime. Rebuild worker archives and freeze a fresh
+environment manifest when upgrading: image/runtime bindings and the bundled
+`libkrunSha256` identify the selected execution condition.
+
 Keep the virtual environment in a durable location,
 not under `/tmp`. Temporary-directory cleanup can remove a venv's `pyvenv.cfg`
 without removing its packages, after which the interpreter silently stops
 resolving the environment and every Harbor command fails with a misleading
-"No Python interpreter with harbor==0.22.0 was found". Point
+"No Python interpreter with harbor==0.24.0 was found". Point
 `EBO_HARBOR_PYTHON` at a path that survives reboots and long unattended runs.
 
 A frozen task whose snapshot fails content verification reports
 `Harbor task status: changed`. Confirm `EBO_HARBOR_PYTHON`
-are exported before assuming the snapshot actually changed.
+is exported before checking the snapshot's contents.
 
 The current runtime profile targets Apple Silicon macOS with Smol's bundled
 libkrun. The environment manifest pins that library's SHA-256. Do not override
-`SMOLVM_LIB_DIR`. Harbor 0.23 remains outside this qualified profile.
+`SMOLVM_LIB_DIR`.
 Docker is used only to build images, not to execute tasks or graders.
 `local-fs-test` supports preparation tests only; old Docker queues remain
 readable but must be explicitly recompiled as new Smol conditions to run.
 
 The worker runtime's `environmentKeys` allowlist passes selected host values as
 plaintext into the attempt child. Keep it minimal: an agent with shell access
-inside the guest can read those values. Smol 1.18 adds host-side credential
-substitution for HTTPS headers, but its current Python `MachineConfig` does not
-expose that binding. EBO does not claim host-held credentials for this SDK path.
-Use a separately approved route for experiments that require that boundary;
+inside the guest can read those values. Smol 1.26.1 exposes host-side HTTPS
+header substitution through `MachineConfig.credentials` and `CredentialSpec`.
+EBO's qualified Harbor worker path uses the environment allowlist. Use a
+separately approved route for experiments that require host-held credentials;
 gateway configuration belongs to the operator, not to a frozen task or EBO.
 
 ## Prepare, review and freeze
@@ -95,10 +100,9 @@ The host Python extension launches an EBO **TypeScript worker inside Harbor's
 environment**. SDK tools and subprocesses therefore see its actual filesystem.
 Python carries control messages only; it does not capture or normalize sessions.
 
-Verified multi-step tasks require a separate verifier environment for every
-step. Harbor 0.22.0 leaves shared-verifier tests in the agent environment until
-the next verification phase, where a later candidate step could read them.
-EBO rejects that configuration during admission rather than changing the task.
+EBO qualifies verified multi-step tasks with a separate verifier environment
+for every step. Admission requires that profile; Harbor owns setup, verification
+and cleanup.
 Single-step shared verification retains its weaker, candidate-modified trust
 boundary; it is not independent grading.
 
