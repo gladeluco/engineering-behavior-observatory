@@ -1,6 +1,6 @@
-# EBO 1.3.0 release candidate
+# EBO 1.3.0
 
-This candidate adds Factory Droid as the eighth harness through the official
+EBO 1.3.0 adds Factory Droid as the eighth harness through the official
 TypeScript SDK 0.9.1 and Droid CLI 0.238.0. EBO records native frames before SDK
 validation, binds owned session/turn terminals, preserves partial attempts, and
 supports retained analysis, Atlas, human review and sanitized export.
@@ -12,7 +12,7 @@ Factory authentication is required for the managed route. CLI and Harbor share
 the capture core. See the [Factory guide](../../docs/harnesses/factory-droid.md)
 for configuration, evidence boundaries and live qualification.
 
-The candidate pins the following harness and environment runtimes:
+The release pins the following harness and environment runtimes:
 
 | Component | Version |
 | --- | --- |
@@ -33,7 +33,7 @@ retained readback preserves the supported older runtime and adapter identities.
 See [runtime qualification](runtime-qualification.md) for native checks,
 dependency constraints and migration requirements.
 
-The candidate manifest pins the current development fixtures, including Factory
+The reproducibility manifest pins the release fixtures, including Factory
 routing and release scanner regression coverage. The source scanner accepts
 Bearer headers built entirely from source references while retaining credential
 literals for detection. Published 1.2.0 release records remain immutable.

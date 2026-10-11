@@ -1,13 +1,13 @@
 # EBO 1.3.0 runtime qualification
 
-The [candidate manifest](reproducibility.json) binds runtime pins and source
+The [reproducibility manifest](reproducibility.json) binds runtime pins and source
 fixtures. This record describes the October 11, 2026 upgrade checks. Live checks
 use synthetic tasks and establish the exercised capture paths; they do not
 measure model quality or benchmark performance.
 
 ## Migration
 
-Freeze fresh harness configurations for the candidate pins. Preserve existing
+Freeze fresh harness configurations for the release pins. Preserve existing
 experiment inputs, native captures and published release records. EBO reads
 supported older Codex, Cursor, DeepSeek, OpenHands and Pi captures with their
 captured versions and adapter identities.
@@ -77,7 +77,7 @@ from three upstream constraints:
 
 - DeepSeek's MCP client pins `@modelcontextprotocol/client` 2.0.0. Its HTTP/OAuth
   issuer-binding advisory is fixed in 2.2.0. The exercised `sdk-minimal`
-  composition does not load MCP; custom HTTP/OAuth MCP compositions need their
+  composition does not load this client; custom HTTP/OAuth MCP compositions need their
   own qualification and an upstream dependency update. See the
   [MCP SDK advisory](https://github.com/modelcontextprotocol/typescript-sdk/security/advisories/GHSA-6qxp-vccf-f47h).
 - DeepSeek's office conversion package pins `fflate` 0.8.2 and calls
