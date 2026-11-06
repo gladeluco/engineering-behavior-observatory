@@ -7,7 +7,7 @@
   <meta name="description" content="EBO captures an engineering agent's native trajectory and workspace changes across eight harnesses, and ties every behavioral finding to cited native lines that re-hash and numbers that recompute.">
   <meta property="og:title" content="Engineering Behavior Observatory">
   <meta property="og:description" content="Every finding traced to the native line behind it.">
-  <meta property="og:image" content="https://trilogy-group.github.io/engineering-behavior-observatory/assets/ebo-promo-poster.jpg">
+  <meta property="og:image" content="https://kumanday.github.io/engineering-behavior-observatory/assets/ebo-promo-poster.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2318130e'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23eb9431' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23eb9431'/%3E%3C/svg%3E">
@@ -33,8 +33,8 @@
         <a href="#harnesses">Harnesses</a>
         <a href="#packets">Packets</a>
         <a href="#tour">Tour</a>
-        <a href="https://github.com/trilogy-group/engineering-behavior-observatory/blob/main/docs/README.md">Docs</a>
-        <a class="gh" href="https://github.com/trilogy-group/engineering-behavior-observatory">GitHub</a>
+        <a href="https://github.com/kumanday/engineering-behavior-observatory/blob/main/docs/README.md">Docs</a>
+        <a class="gh" href="https://github.com/kumanday/engineering-behavior-observatory">GitHub</a>
         <button class="theme" type="button" aria-label="Switch between light and dark theme">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
         </button>
@@ -53,7 +53,7 @@
               <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M4.5 2.6v10.8L13 8z"/></svg>
               Watch the tour <span class="dur">3:50</span>
             </a>
-            <a class="btn" href="https://github.com/trilogy-group/engineering-behavior-observatory/blob/main/docs/guides/quickstart.md">Quickstart</a>
+            <a class="btn" href="https://github.com/kumanday/engineering-behavior-observatory/blob/main/docs/guides/quickstart.md">Quickstart</a>
           </div>
           <div class="install">
             <code><span class="prompt" aria-hidden="true">$</span>npm install -g engineering-behavior-observatory</code>
@@ -152,7 +152,7 @@
         <header class="sec-head">
           <h2 id="claims-h">Anatomy of a claim</h2>
           <p>What a partner receives for each finding. Validation fails if one number no longer recomputes or one cited line no longer hashes to its recorded SHA-256; partner and restricted packets are built only when every claim validates.</p>
-          <p><a class="link" href="https://github.com/trilogy-group/engineering-behavior-observatory/blob/main/docs/evaluation/atlas-bundles.md">Atlas bundle contract</a></p>
+          <p><a class="link" href="https://github.com/kumanday/engineering-behavior-observatory/blob/main/docs/evaluation/atlas-bundles.md">Atlas bundle contract</a></p>
         </header>
         <div class="specimen" role="group" aria-label="Fields of a validated claim">
           <p class="specimen-head"><span>claim</span><span>checked at every build</span></p>
@@ -221,7 +221,7 @@
         <header class="sec-head">
           <h2 id="harnesses-h">Harnesses</h2>
           <p>Each adapter keeps its harness's own methods, identities, lifecycle and completion semantics. Coverage is capability-specific: not every harness exposes the same hooks, histories or telemetry.</p>
-          <p><a class="link" href="https://github.com/trilogy-group/engineering-behavior-observatory/blob/main/docs/harnesses/README.md">Prerequisites and known gaps</a></p>
+          <p><a class="link" href="https://github.com/kumanday/engineering-behavior-observatory/blob/main/docs/harnesses/README.md">Prerequisites and known gaps</a></p>
         </header>
         <div class="table-wrap">
           <table class="ruled harness-table">
@@ -246,7 +246,7 @@
         <header class="sec-head">
           <h2 id="packets-h">Evidence packets</h2>
           <p>One folder a partner can open from disk: narrative, claims, evaluations, metrics and qualified evidence, cross-referenced, with the interactive viewer when the folder is served over HTTP.</p>
-          <p><a class="link" href="https://github.com/trilogy-group/engineering-behavior-observatory/blob/main/docs/evaluation/evidence-packets.md">Packet contract</a></p>
+          <p><a class="link" href="https://github.com/kumanday/engineering-behavior-observatory/blob/main/docs/evaluation/evidence-packets.md">Packet contract</a></p>
         </header>
         <div class="packets">
           <div class="table-wrap">
@@ -313,12 +313,12 @@ ebo packet verify &lt;packet-dir&gt;    <span class="c"># or open verify.html</s
           <h2 id="start-h">First report</h2>
           <p>The bundled synthetic demo makes no model calls and needs no credentials. It shows evidence drilldown, review states, missing evidence and comparison caveats. Requires Node.js 24.19.0, Git and npm.</p>
           <div class="actions">
-            <a class="btn primary" href="https://github.com/trilogy-group/engineering-behavior-observatory/blob/main/docs/guides/quickstart.md">Quickstart</a>
-            <a class="btn" href="https://github.com/trilogy-group/engineering-behavior-observatory/blob/main/docs/reference/cli.md">CLI reference</a>
+            <a class="btn primary" href="https://github.com/kumanday/engineering-behavior-observatory/blob/main/docs/guides/quickstart.md">Quickstart</a>
+            <a class="btn" href="https://github.com/kumanday/engineering-behavior-observatory/blob/main/docs/reference/cli.md">CLI reference</a>
           </div>
         </header>
         <pre class="readout terminal" aria-label="Quickstart commands"><code><span class="c"># from a source checkout</span>
-git clone https://github.com/trilogy-group/engineering-behavior-observatory.git
+git clone https://github.com/kumanday/engineering-behavior-observatory.git
 cd engineering-behavior-observatory
 nvm use &amp;&amp; npm ci &amp;&amp; npm run build &amp;&amp; npm link
 
@@ -335,10 +335,10 @@ ebo atlas build .ebo/first-look/atlas.json .ebo/first-report
     <div class="wrap colophon-inner">
       <p><span class="wm-foot">Engineering Behavior Observatory</span> Apache-2.0 · site <span id="build">local preview</span></p>
       <p class="links">
-        <a href="https://github.com/trilogy-group/engineering-behavior-observatory">GitHub</a>
-        <a href="https://github.com/trilogy-group/engineering-behavior-observatory/releases">Releases</a>
+        <a href="https://github.com/kumanday/engineering-behavior-observatory">GitHub</a>
+        <a href="https://github.com/kumanday/engineering-behavior-observatory/releases">Releases</a>
         <a href="https://www.npmjs.com/package/engineering-behavior-observatory">npm</a>
-        <a href="https://github.com/trilogy-group/engineering-behavior-observatory/blob/main/LICENSE">License</a>
+        <a href="https://github.com/kumanday/engineering-behavior-observatory/blob/main/LICENSE">License</a>
       </p>
     </div>
   </footer>
