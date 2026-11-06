@@ -29,7 +29,7 @@ Use Git, npm, and Node **24.19.0** (the repository's `.nvmrc` pin). If you use
 nvm:
 
 ```sh
-git clone https://github.com/trilogy-group/engineering-behavior-observatory.git
+git clone https://github.com/kumanday/engineering-behavior-observatory.git
 cd engineering-behavior-observatory
 nvm install
 nvm use
@@ -50,8 +50,8 @@ Replace `ebo` with `npm run ebo --` in later examples.
 
 ## Install from a release archive
 
-Download the package and `SHA256SUMS` from a
-[GitHub release](https://github.com/trilogy-group/engineering-behavior-observatory/releases).
+If a [GitHub release](https://github.com/kumanday/engineering-behavior-observatory/releases)
+provides a package and `SHA256SUMS`, download both files.
 For v0.2.1, from the download directory:
 
 ```sh
